@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none;
+  }
+
+  body {
+    @apply bg-background font-manrope text-on-surface antialiased;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  /* ── Buttons ─────────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-space-md py-2.5 rounded-lg font-manrope text-label-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-on-primary hover:bg-on-surface focus:ring-primary shadow-sm hover:shadow-card;
+  }
+  .btn-secondary {
+    @apply btn bg-secondary text-on-secondary hover:bg-secondary-container focus:ring-secondary shadow-sm hover:shadow-card;
+  }
+  .btn-outline {
+    @apply btn bg-surface-container-lowest border border-outline-variant text-on-surface hover:bg-surface-container focus:ring-outline;
+  }
+  .btn-ghost {
+    @apply btn text-on-surface-variant hover:text-on-surface hover:bg-surface-container focus:ring-outline;
+  }
+  .btn-danger {
+    @apply btn bg-error text-on-error hover:opacity-90 focus:ring-error;
+  }
+
+  /* ── Inputs ──────────────────────────────────────── */
+  .input {
+    @apply w-full h-11 px-3 bg-surface-container-lowest border border-outline-variant rounded-lg
+           font-manrope text-body-md text-on-surface placeholder:text-outline
+           focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all;
+  }
+  .input-textarea {
+    @apply input h-auto py-2.5;
+  }
+  .label {
+    @apply block font-manrope text-label-lg text-on-surface mb-1.5;
+  }
+
+  /* ── Cards ───────────────────────────────────────── */
+  .card {
+    @apply bg-surface-container-lowest border border-outline-variant rounded-xl shadow-card p-space-lg;
+  }
+  .card-hover {
+    @apply card hover:shadow-card-lg hover:-translate-y-0.5 transition-all duration-300;
+  }
+
+  /* ── Scroll utility ──────────────────────────────── */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ── Badges / Pills ──────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full font-manrope text-label-caps uppercase tracking-widest;
+  }
+  .badge-blue   { @apply badge bg-secondary-fixed text-on-secondary-fixed; }
+  .badge-green  { @apply badge bg-emerald/10 text-emerald; }
+  .badge-amber  { @apply badge bg-amber/10 text-amber; }
+  .badge-slate  { @apply badge bg-surface-container text-on-surface-variant; }
+  .badge-error  { @apply badge bg-error-container text-on-error-container; }
+
+  /* ── Section headings ────────────────────────────── */
+  .section-title {
+    @apply font-newsreader text-headline-sm text-on-surface;
+  }
+}
+
+/* ── Scrollbar ───────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { @apply bg-outline-variant rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-outline; }
